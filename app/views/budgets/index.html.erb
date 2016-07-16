@@ -1,0 +1,12 @@
+<div class='pure-g'>
+  <div class="pure-u-1"> 
+    <h1> Budgets </h1> 
+    <% @budgets.each do |budget| %>
+      <p> 
+        <%= link_to budget.name, budget_budget_cycle_path(budget, budget.budget_cycles.last) %> 
+        <%= link_to "Edit", edit_budget_path(budget), class: 'pure-button' %> 
+      </p>
+    <% end %>
+    <%= link_to 'New Budget', new_budget_path, class: 'pure-button pure-button-primary' %>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+<div class='pure-g'>
+  <div class="pure-u-1"> 
+    <h1> Edit Budget </h1> 
+    <%= form_for @budget, html: { class: 'pure-form pure-form-stacked' } do |f| %>
+      <fieldset>
+        <%= f.label :period %>
+        <%= f.number_field :period %>
+
+        <%= f.label :monthly %>
+        True
+        <%= f.radio_button :monthly, true %>
+        False
+        <%= f.radio_button :monthly, false %>
+
+        <%= f.label :replenish_period %>
+        <%= f.number_field :replenish_period %>
+
+        <%= f.label :reoccuring %>
+        <%= f.check_box :reoccuring %>
+
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+
+        <%= f.label :amount %>
+        <%= f.number_field :amount, value: (@budget.amount / 100.0).to_i, min: 1 %>
+
+        <%= f.submit "Save Changes", class: 'pure-button pure-button-primary' %>
+      </fieldset>
+    <% end %>
+  </div>
+</div>

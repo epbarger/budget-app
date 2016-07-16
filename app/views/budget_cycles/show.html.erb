@@ -1,0 +1,28 @@
+<div class='pure-g'>
+  <div class="pure-u-1"> 
+    <h1> <%= @budget_cycle.name %> </h1>
+    <p> Current Balance: <%= cents_to_currency(@budget_cycle.current_balance) %> </p> 
+    <p> Unlocked <%= cents_to_currency(@budget_cycle.unlocked_balance) %> of <%= cents_to_currency(@budget_cycle.period_balance) %></p> 
+    <p> Day <%= @budget_cycle.day_in_cycle %> of <%= @budget_cycle.number_of_days_in_cycle %></p> 
+    <div class='meter'>
+      <span style='width: <%= ((@budget_cycle.unlocked_balance / @budget_cycle.period_balance.to_f) * 100.0) %>%;'></span>
+    </div>
+  </div>
+  <div class="pure-u-1">
+    <%= form_for @new_balance_event, url: budget_budget_cycle_balance_events_path(@budget, @budget_cycle.id), html: { class: 'pure-form' } do |f| %>
+      <fieldset>
+        <legend>Enter Purchase</legend>
+        <%= f.label :amount, '$' %>
+        <%= f.number_field :amount, placeholder: 'Amount', min: 1 %>
+        <%= f.submit 'Submit', class: 'pure-button pure-button-success' %>
+      </fieldset>
+    <% end %>
+  </div>
+  <div class="pure-u-1">
+    <% @budget_cycle.balance_events.order("created_at DESC").each do |be| %>
+      <% if be.amount.present? %>
+        <p><%= time_ago_in_words(be.created_at) %> ago : <%= cents_to_currency(be.amount) %></p>
+      <% end %>
+    <% end %>
+  </div>
+</div>
