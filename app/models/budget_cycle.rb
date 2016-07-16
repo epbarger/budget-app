@@ -13,7 +13,11 @@ class BudgetCycle < ApplicationRecord
   # period_balance
 
   def current_balance
-    unlocked_balance - balance_events.map(&:amount).compact.sum
+    unlocked_balance - amount_spent
+  end
+
+  def amount_spent
+    balance_events.map(&:amount).compact.sum
   end
 
   def unlocked_balance
