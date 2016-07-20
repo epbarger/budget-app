@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160715201440) do
+ActiveRecord::Schema.define(version: 20160720165316) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,13 +35,13 @@ ActiveRecord::Schema.define(version: 20160715201440) do
   end
 
   create_table "budgets", force: :cascade do |t|
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.integer  "account_id"
     t.integer  "period"
-    t.boolean  "monthly"
+    t.boolean  "monthly",          default: true
     t.integer  "replenish_period", default: 1
-    t.boolean  "reoccuring"
+    t.boolean  "reoccuring",       default: true
     t.integer  "amount"
     t.string   "name"
     t.datetime "hidden_at"

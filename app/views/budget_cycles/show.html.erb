@@ -21,10 +21,10 @@
   <div class="pure-u-1">
     <%= form_for @new_balance_event, url: budget_budget_cycle_balance_events_path(@budget, @budget_cycle.id), html: { class: 'pure-form' } do |f| %>
       <fieldset>
-        <legend>Enter Purchase</legend>
-        <%= f.label :amount, '$' %>
-        <%= f.number_field :amount, placeholder: 'Amount', min: 1 %>
-        <%= f.submit 'Submit', class: 'pure-button pure-button-success' %>
+<!--         <%= f.label :amount, 'Enter Purchase' %> -->
+        <%= f.number_field :amount, placeholder: '$$$', min: 0.01, step: 0.01, class: 'amount-field', required: true %>
+        <%= f.text_field :note, placeholder: 'Note (Optional)', class: 'note-field' %>
+        <%= f.submit 'Add', class: 'pure-button pure-button-primary' %>
       </fieldset>
     <% end %>
   </div>
@@ -34,6 +34,11 @@
         <p><%= time_ago_in_words(be.created_at) %> ago : <%= cents_to_currency(be.amount) %></p>
       <% end %>
     <% end %>
-    <%= link_to "All Budgets", budgets_path, class: 'pure-button' %>
+    
   </div>
+  <div class="pure-u-1" style='align:'>
+    <%= link_to "Back", budgets_path, class: 'pure-button' %>
+    <%= link_to "Settings", edit_budget_path(@budget_cycle.budget), class: 'pure-button' %>
+  </div>
+
 </div>
