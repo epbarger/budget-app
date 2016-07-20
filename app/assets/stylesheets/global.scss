@@ -1,0 +1,16 @@
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+h1.large-balance {
+  float: right;
+  color: rgb(39, 234, 165);
+
+  &.negative {
+    color: rgb(254, 95, 76);
+  }
+}
+
+

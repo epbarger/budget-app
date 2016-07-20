@@ -1,17 +1,22 @@
 <div class='pure-g'>
   <div class="pure-u-1"> 
+    <h1 class="large-balance <%= 'negative' if @budget_cycle.current_balance < 0 %>"><%= cents_to_currency(@budget_cycle.current_balance) %></h1> 
     <h1> <%= @budget_cycle.name %> </h1>
-    <p> Current Balance: <%= cents_to_currency(@budget_cycle.current_balance) %> </p> 
+    <p>
+      <% if @budget_cycle.current_balance > 0 %>
+        <div class='meter positive'>
+          <span style='width: <%= ((@budget_cycle.unlocked_balance / @budget_cycle.period_balance.to_f) * 100.0) %>%;' class='meter-unlocked'></span>
+          <span style='width: <%= (((@budget_cycle.amount_spent) / @budget_cycle.period_balance.to_f) * 100.0) %>%;' class='meter-spent overlay'></span>
+        </div>
+      <% else %>
+        <div class='meter negative'>
+          <span style='width: <%= ((@budget_cycle.unlocked_balance / @budget_cycle.period_balance.to_f) * 100.0) %>%;' class='meter-unlocked'></span>
+          <span style='width: <%= (((@budget_cycle.amount_spent) / @budget_cycle.period_balance.to_f) * 100.0) %>%;' class='meter-spent overlay'></span>
+        </div>
+      <% end %>
+    </p>
     <p> Unlocked <%= cents_to_currency(@budget_cycle.unlocked_balance) %> of <%= cents_to_currency(@budget_cycle.period_balance) %></p> 
     <p> Day <%= @budget_cycle.day_in_cycle %> of <%= @budget_cycle.number_of_days_in_cycle %></p> 
-    <p>
-      <div class='meter'>
-        <span style='width: <%= ((@budget_cycle.amount_spent / @budget_cycle.period_balance.to_f) * 100.0) %>%;'></span>
-      </div>
-      <div class='meter'>
-        <span style='width: <%= ((@budget_cycle.unlocked_balance / @budget_cycle.period_balance.to_f) * 100.0) %>%;'></span>
-      </div>
-    </p>
   </div>
   <div class="pure-u-1">
     <%= form_for @new_balance_event, url: budget_budget_cycle_balance_events_path(@budget, @budget_cycle.id), html: { class: 'pure-form' } do |f| %>

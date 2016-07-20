@@ -1,0 +1,30 @@
+.meter { 
+  height: 20px;
+  position: relative;
+  background: #555;
+  z-index: -1;
+  border-radius: 2px;
+}
+
+.meter > span {
+  display: block;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+
+  &.overlay {
+    top: -20px;
+  }
+}
+
+.meter.positive > span {
+  &.meter-unlocked { background-color: rgb(39, 234, 165);  }
+  &.meter-spent { background-color: green; }
+}
+
+.meter.negative > span {
+  &.meter-unlocked { background-color: rgb(254, 95, 76); }
+  &.meter-spent { background-color: red;  z-index: -1; }
+}
