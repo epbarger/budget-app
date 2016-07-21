@@ -32,6 +32,7 @@ gem 'jquery-rails'
 
 gem 'pg'
 gem 'pure-css-rails'
+gem "font-awesome-rails"
 gem 'paper_trail'
 
 group :development, :test do

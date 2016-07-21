@@ -9,6 +9,7 @@ h1.large-balance {
   // text-align: right;
   margin: 5px;
   color: rgb(39, 234, 165);
+  font-size:46px;
 
   &.negative {
     color: rgb(254, 95, 76);
@@ -17,10 +18,6 @@ h1.large-balance {
 
 .small-bottom-margin {
   margin-bottom: 5px;
-}
-
-.pure-form input{
-  box-shadow: none !important;
 }
 
 .budget-name {
@@ -73,6 +70,11 @@ h1.large-balance {
   &.pure-table thead {
     background: none;
   }
+}
+
+.new-transaction .pure-form input[type=number], .new-transaction .pure-form input[type=text]{
+  box-shadow: none;
+  -webkit-appearance: none;
 }
 
 

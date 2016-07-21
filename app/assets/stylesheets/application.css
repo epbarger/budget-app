@@ -13,5 +13,6 @@
  *= require_tree .
  *= require pure
  *= require grids-responsive
+ *= require font-awesome
  *= require_self
  */

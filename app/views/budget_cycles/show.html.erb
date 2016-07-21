@@ -1,6 +1,11 @@
 <div class='pure-g'>
   <div class="pure-u-1"> 
-    <h2 class='budget-name'> <%= @budget_cycle.name %> </h2>
+    <%= link_to edit_budget_path(@budget_cycle.budget), class: 'pure-button', style: 'float:right;' do %>
+      <% fa_icon "cog" %>
+    <% end %>
+    <h2 class='budget-name'> 
+      <%= @budget_cycle.name %> 
+    </h2>
     <h1 class="large-balance <%= 'negative' if @budget_cycle.current_balance < 0 %>"><%= cents_to_currency(@budget_cycle.current_balance) %></h1>
     <p>
       <% if @budget_cycle.current_balance > 0 %>
@@ -25,14 +30,14 @@
     <div class='new-transaction'>
       <div class='bold small-bottom-margin'>New Transaction</div>
       <%= form_for @new_balance_event, url: budget_budget_cycle_balance_events_path(@budget, @budget_cycle.id), html: { class: 'pure-form pure-g' } do |f| %>
-          <div class='pure-u-1-5'>
+          <div class='pure-u-6-24'>
              <%= f.number_field :amount, placeholder: '$', min: 0.01, step: 0.01, class: 'amount-field one-hundred', required: true %>
           </div>
-          <div class='pure-u-3-5'>
+          <div class='pure-u-14-24'>
              <%= f.text_field :note, placeholder: 'Note (Optional)', class: 'note-field one-hundred' %>
           </div>
-          <div class='pure-u-1-5'>
-            <%= f.submit '+', class: 'pure-button pure-button-primary one-hundred' %>
+          <div class='pure-u-4-24'>
+            <%= f.submit '+', class: 'pure-button pure-button-primary one-hundred', style: 'font-size: 22px; font-weight: bold; padding: 0.25em;' %>
          </div>
       <% end %>
     </div> 
@@ -65,8 +70,10 @@
     </div> 
   </div>
   <div class="pure-u-1 top-margin">
-    <%= link_to "Back", budgets_path, class: 'pure-button' %>
-    <%= link_to "Settings", edit_budget_path(@budget_cycle.budget), class: 'pure-button' %>
+    <%= link_to  budgets_path, class: 'pure-button' do %>
+      <%= fa_icon 'chevron-left' %>
+      Budgets
+     <% end %>
   </div>
 
 </div>
