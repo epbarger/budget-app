@@ -16,12 +16,24 @@ h1.large-balance {
   }
 }
 
+.budget-list a {
+  text-decoration: none;
+}
+
+.positive-color {
+  color: rgb(39, 234, 165);
+}
+
+.negative-color {
+  color: rgb(254, 95, 76);
+}
+
 .small-bottom-margin {
   margin-bottom: 5px;
 }
 
 .budget-name {
-  margin: 5px;
+  margin: 5px 0;
 }
 
 .bold {
