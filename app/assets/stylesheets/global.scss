@@ -1,11 +1,13 @@
 main {
-  max-width: 1200px;
+  max-width: 400px;
   margin: 0 auto;
   padding: 10px;
 }
 
 h1.large-balance {
-  float: right;
+  // float: right;
+  // text-align: right;
+  margin: 5px;
   color: rgb(39, 234, 165);
 
   &.negative {
@@ -13,12 +15,64 @@ h1.large-balance {
   }
 }
 
-.amount-field{
-  width:90px;
+.small-bottom-margin {
+  margin-bottom: 5px;
 }
 
-.note-field{
-  width:180px;
+.pure-form input{
+  box-shadow: none !important;
+}
+
+.budget-name {
+  margin: 5px;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.center{
+  text-align: center;
+}
+
+.hide {
+  display: none;
+}
+
+// .amount-field{
+//   width:90px;
+// }
+
+// .note-field{
+//   width:180px;
+// }
+
+.one-hundred{
+  width: 100%;
+}
+
+.top-margin{
+  margin-top:25px;
+}
+
+.transaction-log {
+  margin-bottom: 15px;
+}
+
+.transaction-table {
+  width: 100%;
+  font-size: 14px;
+
+  &.pure-table {
+    border: none;
+    border: 1px solid #EEE;
+    table-layout:fixed;
+    word-wrap:break-word;
+  }
+  
+  &.pure-table thead {
+    background: none;
+  }
 }
 
 
