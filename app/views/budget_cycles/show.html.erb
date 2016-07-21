@@ -6,7 +6,9 @@
     <h2 class='budget-name'> 
       <%= @budget_cycle.name %> 
     </h2>
-    <h1 class="large-balance <%= 'negative' if @budget_cycle.current_balance < 0 %>"><%= cents_to_currency(@budget_cycle.current_balance) %></h1>
+    <div class='top-margin'>
+      <h1 class="large-balance <%= 'negative' if @budget_cycle.current_balance < 0 %>"><%= cents_to_currency(@budget_cycle.current_balance) %></h1>
+    </div>
     <p>
       <% if @budget_cycle.current_balance > 0 %>
         <div class='meter positive'>
