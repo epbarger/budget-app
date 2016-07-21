@@ -87,13 +87,11 @@ input[type='checkbox'] {
   display: none;
 }
 
-// .amount-field{
-//   width:90px;
-// }
-
-// .note-field{
-//   width:180px;
-// }
+small {
+  font-weight: normal;
+  color: grey;
+  margin-left: 6px;
+}
 
 .one-hundred{
   width: 100%;

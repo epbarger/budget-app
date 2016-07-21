@@ -49,7 +49,7 @@
     </div> 
 
     <div class="transaction-log top-margin">
-      <div class='bold small-bottom-margin'>Transaction Log</div>
+      <div class='bold small-bottom-margin'>Transaction Log<small>click for details</small></div>
       <table class="pure-table pure-table-horizontal pure-table-striped-fixed transaction-table">
         <thead>
           <tr style='background-color: white;'>
@@ -74,7 +74,9 @@
                       <% end %>
                       <div class='small-bottom-margin'> <span class='bold' >Date: </span> <%= be.created_at %></div> 
                       <div class='small-bottom-margin'> <span class='bold' >Amount: </span> <%= cents_to_currency(be.amount) %></div>
-                      <div class='small-bottom-margin'> <span class='bold' >Note: </span> <%= be.note %></div>
+                      <% if be.note %>
+                        <div class='small-bottom-margin'> <span class='bold' >Note: </span> <%= be.note %></div>
+                      <% end %>
                     </div>
                   </td>
                 </tr>
