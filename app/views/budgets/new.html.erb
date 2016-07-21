@@ -1,8 +1,7 @@
 <div class='pure-g'>
   <div class="pure-u-1"> 
     <%= form_for @budget, html: { class: 'pure-form pure-form-stacked' } do |f| %>
-        <%= f.submit "+", class: 'pure-button pure-button-primary', style: 'font-size: 22px; font-weight: bold; padding: 0.25em 0.8em; float:right;' %>
-        <h2 class='budget-name'> New Budget </h2> 
+        <h2 class='budget-name'> New Budget </h2>  
         <div class='pure-g top-margin'>
           <fieldset style='width: 100%;'>
             <div class='form-row'>
@@ -33,12 +32,9 @@
             </div>
           </fieldset>
         </div>
+        <div class='top-margin'>
+            <%= f.submit "Create", class: 'pure-button pure-button-primary pull-right one-hundred' %>
+        </div>
     <% end %>
-  </div>
-    <div class="pure-u-1 top-margin">
-    <%= link_to  budgets_path, class: 'pure-button' do %>
-      <%= fa_icon 'chevron-left' %>
-      Budgets
-     <% end %>
   </div>
 </div>

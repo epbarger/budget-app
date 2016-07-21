@@ -28,3 +28,19 @@
   &.meter-unlocked { background-color: rgb(254, 95, 76); }
   &.meter-spent { background-color: red;  z-index: -1; }
 }
+
+.spent-positive{
+  color: green;
+}
+
+.spent-negative {
+  color: red;
+}
+
+.unlocked-positive {
+  color: rgb(39, 234, 165);
+}
+
+.unlocked-negative {
+  color: rgb(254, 95, 76);
+}

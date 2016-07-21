@@ -1,16 +1,16 @@
 <div class='pure-g'>
   <div class="pure-u-1"> 
-    <%= link_to '+', new_budget_path, class: 'pure-button pure-button-primary', style: 'font-size: 22px; font-weight: bold; padding: 0.25em 0.8em; float:right;' %>
     <h2 class='budget-name'> Budgets </h2> 
     <div class='budget-list top-margin'>
       <% @budgets.each do |budget| %>
         <%= link_to budget_budget_cycle_path(budget, budget.budget_cycles.last) do %> 
-          <div class=<%= (budget.budget_cycles.last.current_balance < 0) ? 'negative-color' : 'positive-color' %>>
+          <div class='budget-list-row <%= (budget.budget_cycles.last.current_balance < 0) ? 'negative-color' : 'positive-color' %>'>
             <span style='float:right;'><%= cents_to_currency(budget.budget_cycles.last.current_balance) %></span>
             <h2><%= budget.name %></h2>
           </div>
         <% end %>
       <% end %>
+      <%= link_to 'New Budget', new_budget_path, class: 'pure-button pure-button-white pull-right one-hundred top-margin' %>
     </div>
   </div>
 </div>

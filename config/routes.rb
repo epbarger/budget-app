@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :budgets do
     resources :budget_cycles do 
-      resources :balance_events, only: [:create, :show]
+      resources :balance_events, only: [:create, :destroy]
     end
   end
 end

@@ -24,6 +24,10 @@ class Budget < ApplicationRecord
     (amount / 100.0).to_i
   end
 
+  def current_cycle
+    budget_cycles.order("created_at ASC").last
+  end
+
   def check_and_create_next_cycle
     if reoccuring
       previous_cycle = budget_cycles.order("created_at DESC").first

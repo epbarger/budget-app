@@ -37,6 +37,6 @@ class BudgetCycle < ApplicationRecord
   end
 
   def active
-    Time.zone.now > end_date
+    Time.zone.now < end_date
   end
 end

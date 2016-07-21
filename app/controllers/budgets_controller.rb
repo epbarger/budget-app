@@ -24,10 +24,13 @@ class BudgetsController < ApplicationController
   def update
     @budget = Budget.find(params[:id])
     @budget.update( budget_params.merge({ amount: (budget_params[:amount].to_f * 100.0).to_i }) )
-    redirect_to budget_budget_cycle_path(@budget, @budget.budget_cycles.last)
+    redirect_to budget_budget_cycle_path(@budget, @budget.current_cycle)
   end
 
   def destroy
+    @budget = Budget.find(params[:id])
+    @budget.destroy!
+    redirect_to action: :index
   end
 
   private
