@@ -33,10 +33,14 @@
       <div class='bold small-bottom-margin'>New Transaction</div>
       <%= form_for @new_balance_event, url: budget_budget_cycle_balance_events_path(@budget, @budget_cycle.id), html: { class: 'pure-form pure-g' } do |f| %>
           <div class='pure-u-6-24'>
-             <%= f.number_field :amount, placeholder: '$', min: 0.01, step: 0.01, class: 'amount-field one-hundred', required: true %>
+            <div style='margin-right:2px;'>
+               <%= f.number_field :amount, placeholder: '$', min: 0.01, step: 0.01, class: 'amount-field one-hundred', required: true %>
+            </div>
           </div>
           <div class='pure-u-14-24'>
-             <%= f.text_field :note, placeholder: 'Note (Optional)', class: 'note-field one-hundred' %>
+            <div style='margin-right:2px;'>
+               <%= f.text_field :note, placeholder: 'Note (Optional)', class: 'note-field one-hundred'%>
+            </div>
           </div>
           <div class='pure-u-4-24'>
             <%= f.submit '+', class: 'pure-button pure-button-primary one-hundred', style: 'font-size: 22px; font-weight: bold; padding: 0.25em;' %>

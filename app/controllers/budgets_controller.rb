@@ -1,6 +1,6 @@
 class BudgetsController < ApplicationController
   def index
-    @budgets = Budget.all
+    @budgets = Budget.all.order("created_at")
   end
 
   def show # list of all budget cyces
@@ -22,8 +22,9 @@ class BudgetsController < ApplicationController
   end
 
   def update
-    @budget = Budget.find(params[:id]).update( budget_params.merge({ amount: (budget_params[:amount].to_f * 100.0).to_i }) )
-    redirect_to action: :index
+    @budget = Budget.find(params[:id])
+    @budget.update( budget_params.merge({ amount: (budget_params[:amount].to_f * 100.0).to_i }) )
+    redirect_to budget_budget_cycle_path(@budget, @budget.budget_cycles.last)
   end
 
   def destroy

@@ -16,6 +16,19 @@ h1.large-balance {
   }
 }
 
+input[type='checkbox'] {
+  width: 24px;
+  height: 24px;
+}
+
+.form-row{
+  margin-bottom: 10px;
+}
+.subtext{
+  font-size: 12px;
+  color: #777;
+}
+
 .budget-list a {
   text-decoration: none;
 }

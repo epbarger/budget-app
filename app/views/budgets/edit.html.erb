@@ -1,19 +1,46 @@
 <div class='pure-g'>
   <div class="pure-u-1"> 
-    <h1> Edit Budget </h1> 
     <%= form_for @budget, html: { class: 'pure-form pure-form-stacked' } do |f| %>
-      <fieldset>
-        <%= f.label :name %>
-        <%= f.text_field :name %>
+        <%= f.submit "✓", class: 'pure-button pure-button-primary', style: 'font-size: 16px; font-weight: bold; padding: 0.35em 0.8em; float:right;' %>
+        <h2 class='budget-name'> Edit Budget </h2> 
+        <div class='pure-g top-margin'>
+          <fieldset>
+            <div class='form-row'>
+                <div class='pure-u-2-5'>
+                    <%= f.label :name %>
+                </div>
+                <div class='pure-u-3-5'>
+                    <%= f.text_field :name, class: 'one-hundred', required: true %>
+                </div>
+            </div>
 
-        <%= f.label :amount %>
-        <%= f.number_field :amount, value: (@budget.amount / 100.0).to_i, min: 1 %>
+            <div class='form-row'>
+                <div class='pure-u-2-5'>
+                    <%= f.label :amount, 'Budget' %>
+                </div>
+                <div class='pure-u-3-5'>
+                    <%= f.number_field :amount, value: (@budget.amount / 100.0).to_i, min: 1, class: 'one-hundred', required: true  %>
+                    <span class='subtext'> Changes to the budget will not take effect until the next cycle. </span>
+                </div>
+            </div>
 
-        <%= f.label :reoccuring %>
-        <%= f.check_box :reoccuring %>
-        <br><br>
-        <%= f.submit "Save Changes", class: 'pure-button pure-button-primary' %>
-      </fieldset>
+            <div class='form-row'>
+                <div class='pure-u-2-5'>
+                    <%= f.label :reoccuring, 'Recurring?'  %>
+                </div>
+                <div class='pure-u-3-5'>
+                    <%= f.check_box :reoccuring %>
+                </div>
+            </div>
+          </fieldset>
+        </div>
+
+    <div class='top-margin'>
+        <%= button_tag type='submit', class: 'pure-button' do %>
+          <%= fa_icon 'chevron-left' %>
+          <%= @budget.name %>
+         <% end %>
+     </div>
     <% end %>
   </div>
 </div>
