@@ -83,4 +83,14 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.smtp_settings = {
+    :address => ENV['SPARKPOST_SMTP_HOST'],
+    :port => ENV['SPARKPOST_SMTP_PORT'],
+    :password => ENV['SPARKPOST_SMTP_PASSWORD'],
+    :username => ENV['SPARKPOST_SMTP_USERNAME'],
+    :domain => "budget-app-test.herokuapp.com",
+    :enable_starttls_auto => true
+  }
 end
