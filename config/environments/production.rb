@@ -86,7 +86,7 @@ Rails.application.configure do
 
   ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.smtp_settings = {
-    :address => ENV['SPARKPOST_SMTP_HOST'],
+    :host => ENV['SPARKPOST_SMTP_HOST'],
     :port => ENV['SPARKPOST_SMTP_PORT'],
     :password => ENV['SPARKPOST_SMTP_PASSWORD'],
     :username => ENV['SPARKPOST_SMTP_USERNAME'],
