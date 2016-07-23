@@ -4,4 +4,8 @@ $(document).ready(function(){
     $('div.detail-row-div').not($detailRow).slideUp(200);
     $detailRow.slideToggle(200);
   })
+
+  $('.notice, .alert').on('click', function(){
+    $(this).fadeOut(300)
+  })
 })

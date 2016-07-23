@@ -27,7 +27,6 @@
       .logo {
         color: rgb(39, 234, 165);
         font-size: 23px;
-        font-weight: bold;
       }
     }
   }
@@ -38,6 +37,7 @@
     left: 0;
   }
 }
+
 .flash {
   background-color: white;
 }
@@ -46,16 +46,19 @@
   max-width: 960px;
   margin: 0 auto;
   text-align: center;
-  padding-top: 3px;
-  padding-bottom: 1px;
+  padding: 5px;
+  padding-top:6px;
+  font-size: 14px;
 }
 
 .notice {
-  background-color: lightgrey;
+  background-color: #eaeaea;;
   color: black;
+  margin-bottom: 18px;
 }
 
 .alert {
   background-color: #fe5f4c;
   color: black;
+  margin-bottom: 18px;
 }

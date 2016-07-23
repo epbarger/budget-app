@@ -14,6 +14,24 @@
       <%= render 'shared/header' %>
     </header>
     <main>
+      <div class='flash'>
+        <div class="notice">
+          <% if notice.present? %>
+            <div class='flash-content'>
+              <%= notice %>
+              <span class='pull-right'> <%=fa_icon 'times' %> </span>
+            </div>
+          <% end %>
+        </div>
+        <div class="alert">
+          <% if alert.present? %>
+            <div class='flash-content'>
+              <%= alert %>
+              <span class='pull-right'> <%=fa_icon 'times' %> </span>
+            </div>
+          <% end %>
+        </div>
+      </div>
       <%= yield %>
     </main>
   </body>
