@@ -15,20 +15,20 @@
     </header>
     <main>
       <div class='flash'>
-        <div class="notice">
-          <% if notice.present? %>
+        <% if notice.present? %>
+          <div class="notice">
             <div class='flash-content'>
               <%= notice %>
             </div>
-          <% end %>
-        </div>
-        <div class="alert">
-          <% if alert.present? %>
+          </div>
+        <% end %>
+        <% if alert.present? %>
+          <div class="alert">
             <div class='flash-content'>
               <%= alert %>
             </div>
-          <% end %>
-        </div>
+          </div>
+        <% end %>
       </div>
       <%= yield %>
     </main>
