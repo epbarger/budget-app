@@ -91,7 +91,7 @@ Rails.application.configure do
     :address => ENV['SPARKPOST_SMTP_HOST'],
     :port => ENV['SPARKPOST_SMTP_PORT'],
     :password => ENV['SPARKPOST_SMTP_PASSWORD'],
-    :username => ENV['SPARKPOST_SMTP_USERNAME'],
+    :user_name => ENV['SPARKPOST_SMTP_USERNAME'],
     :domain => "budget-app-test.herokuapp.com",
     :enable_starttls_auto => true
   }
