@@ -32,8 +32,9 @@ gem 'jquery-rails'
 
 gem 'pg'
 gem 'pure-css-rails'
-gem "font-awesome-rails"
+gem 'font-awesome-rails'
 gem 'paper_trail'
+gem 'devise'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -5,5 +5,27 @@
         Budget App 
       </span>
     </a>
+    <% if current_user %>
+      <%= link_to destroy_user_session_path, method: :delete, class: 'pure-button pull-right' do %>
+        <%= fa_icon 'user' %>
+      <% end %>
+    <% end %>
+
+  </div>
+  <div class='flash'>
+    <div class="notice">
+      <% if notice.present? %>
+        <div class='flash-content'>
+          <%= notice %>
+        </div>
+      <% end %>
+    </div>
+    <div class="alert">
+      <% if alert.present? %>
+        <div class='flash-content'>
+          <%= alert %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>

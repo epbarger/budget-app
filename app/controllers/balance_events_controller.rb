@@ -1,4 +1,6 @@
 class BalanceEventsController < ApplicationController
+  before_action :authenticate_user!
+    
   def create
     budget = Budget.find(params[:budget_id])
     budget_cycle = budget.budget_cycles.find(params[:budget_cycle_id])

@@ -1,0 +1,17 @@
+<div class='pure-g'>
+  <div class="pure-u-1">
+    <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+      <h2 class='budget-name'>Awaiting Confirmation</h2>
+
+      <%= devise_error_messages! %>
+      <%= f.hidden_field :email, value: session[:user_confirmation_email] || (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
+
+      <div class='top-margin'>
+        <%= f.submit "Resend Confirmation Instructions", class: 'pure-button pure-button-primary pull-right one-hundred' %>
+      </div>
+    <% end %>
+    <%= link_to "Log In", new_session_path(resource_name), class: 'pure-button pure-button-white pull-right one-hundred top-margin' %>
+    <%= link_to "Sign Up",  new_user_registration_path, class: 'pure-button pure-button-white pull-right one-hundred top-margin' %>
+  </div>
+</div>
+

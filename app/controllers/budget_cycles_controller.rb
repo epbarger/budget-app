@@ -1,4 +1,6 @@
 class BudgetCyclesController < ApplicationController
+  before_action :authenticate_user!
+  
   def show
     @budget = Budget.find(params[:budget_id])
     @budget_cycle = @budget.budget_cycles.where(id: params[:id]).first

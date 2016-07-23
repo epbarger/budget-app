@@ -1,6 +1,9 @@
 class Account < ApplicationRecord
   has_paper_trail
   
-  belongs_to :user
+  has_many :users
   has_many :budgets
+
+  #timezone
+  #month_start
 end

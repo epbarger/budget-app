@@ -63,7 +63,7 @@
               <% if be.amount.present? %>
                 <tr class='click-to-expand'>
                   <td><%= cents_to_currency(be.amount) %></td>
-                  <td style='text-overflow: ellipsis;'><%= be.note %></td>
+                  <td style='text-overflow: ellipsis; overflow:hidden; white-space:nowrap;'><%= be.note %></td>
                 </tr>
                 <tr>
                   

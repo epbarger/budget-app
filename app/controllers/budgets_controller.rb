@@ -1,4 +1,6 @@
 class BudgetsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @budgets = Budget.all.order("created_at")
   end

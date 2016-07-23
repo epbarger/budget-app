@@ -9,6 +9,13 @@
     margin: 0 auto;
     padding: 10px;
 
+    .pure-button {
+      background-color: black;
+      color: white;
+      padding: 0.2em 0.8em;
+      border: 1px solid #999;
+    }
+
     a {
       text-decoration: none;
     }
@@ -30,4 +37,25 @@
     top: 0;
     left: 0;
   }
+}
+.flash {
+  background-color: white;
+}
+
+.flash-content {
+  max-width: 960px;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 3px;
+  padding-bottom: 1px;
+}
+
+.notice {
+  background-color: lightgrey;
+  color: black;
+}
+
+.alert {
+  background-color: #fe5f4c;
+  color: black;
 }

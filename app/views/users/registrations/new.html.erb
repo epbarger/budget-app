@@ -1,0 +1,52 @@
+<div class='pure-g'>
+  <div class="pure-u-1"> 
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'pure-form pure-form-stacked' }) do |f| %>
+      <h2 class='budget-name'>Sign Up</h2>
+      <%= devise_error_messages! %>
+
+      <div class='pure-g top-margin'>
+        <fieldset style='width: 100%;'>
+          <div class='form-row'>
+            <div class='pure-u-2-5'>
+              <%= f.label :email %>
+            </div>
+            <div class='pure-u-3-5'>
+              <%= f.email_field :email, autofocus: true, class: 'one-hundred' %>
+            </div>
+          </div>
+
+          <div class='form-row'>
+            <div class='pure-u-2-5'>
+              <%= f.label :password %>
+            </div>
+            <div class='pure-u-3-5'>
+              <%= f.password_field :password, autocomplete: "off", class: 'one-hundred' %>
+              <% if @minimum_password_length %>
+                <span class='subtext'> (<%= @minimum_password_length %> characters minimum)</span>
+              <% end %>
+            </div>
+          </div>
+
+          <div class='form-row'>
+            <div class='pure-u-2-5'>
+              <%= f.label :password_confirmation, 'Confirm Password' %>
+            </div>
+            <div class='pure-u-3-5'>
+              <%= f.password_field :password_confirmation, autocomplete: "off", class: 'one-hundred' %>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+      <div class="top-margin">
+        <%= f.submit "Sign Up", class: 'pure-button pure-button-primary pull-right one-hundred' %>
+      </div>
+    <% end %>
+    <%= link_to "Log In", new_session_path(resource_name), class: 'pure-button pure-button-white pull-right one-hundred top-margin' %>
+  </div>
+</div>
+
+
+
+
+
+

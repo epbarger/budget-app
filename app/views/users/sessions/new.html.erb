@@ -1,0 +1,46 @@
+<div class='pure-g'>
+  <div class="pure-u-1"> 
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'pure-form pure-form-stacked' }) do |f| %>
+      <h2 class='budget-name'>Log In</h2>
+      <div class='pure-g top-margin'>
+        <fieldset style='width: 100%;'>
+
+          <div class='form-row'>
+            <div class='pure-u-2-5'>
+              <%= f.label :email %>
+            </div>
+            <div class='pure-u-3-5'>
+              <%= f.email_field :email, autofocus: true, class: 'one-hundred' %>
+            </div>
+          </div>
+
+          <div class='form-row'>
+            <div class='pure-u-2-5'>
+              <%= f.label :password %>
+            </div>
+            <div class='pure-u-3-5'>
+              <%= f.password_field :password, autocomplete: "off", class: 'one-hundred' %>
+            </div>
+          </div>
+
+          <% if devise_mapping.rememberable? -%>
+            <div class='form-row'>
+              <div class='pure-u-2-5'>
+                <%= f.label :remember_me %>
+              </div>
+              <div class='pure-u-3-5'>
+                <%= f.check_box :remember_me %>
+              </div>
+            </div>
+          <% end -%>
+        </fieldset>
+      </div>
+      <div class='top-margin'>
+        <%= f.submit "Log In", class: 'pure-button pure-button-primary pull-right one-hundred' %>
+      </div>
+    <% end %>
+      <%= link_to "Sign Up",  new_user_registration_path, class: 'pure-button pure-button-white pull-right one-hundred top-margin' %>
+      <%= link_to "Forgot your password?", new_password_path(resource_name), class: 'pure-button pure-button-white pull-right one-hundred top-margin' %>
+
+  </div>
+</div>
