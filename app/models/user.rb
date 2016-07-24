@@ -12,6 +12,6 @@ class User < ApplicationRecord
   attr_accessor :timezone
 
   def create_an_account
-    self.account = Account.create(timezone: timezone, month_start: 1)
+    self.account = Account.create(timezone: REVERSE_TZ_HASH[timezone], month_start: 1)
   end
 end
