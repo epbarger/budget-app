@@ -22,7 +22,7 @@
             <div class='pure-u-3-5'>
               <%= f.password_field :password, autocomplete: "off", class: 'one-hundred' %>
               <% if @minimum_password_length %>
-                <span class='subtext'> (<%= @minimum_password_length %> characters minimum)</span>
+                <span class='subtext'> <%= @minimum_password_length %> characters minimum</span>
               <% end %>
             </div>
           </div>
@@ -37,6 +37,7 @@
           </div>
         </fieldset>
       </div>
+      <%= f.hidden_field :timezone %>
       <div class="top-margin">
         <%= f.submit "Sign Up", class: 'pure-button pure-button-primary pull-right one-hundred' %>
       </div>

@@ -8,4 +8,8 @@ $(document).ready(function(){
   $('.notice, .alert').on('click', function(){
     $(this).fadeOut(300)
   })
+
+  if ($('form#new_user').length > 0) {
+    $('#user_timezone').val(jstz.determine().name())
+  }
 })

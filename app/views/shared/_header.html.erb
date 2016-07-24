@@ -6,8 +6,12 @@
       </span>
     </a>
     <% if current_user %>
-      <%= link_to destroy_user_session_path, method: :delete, class: 'pure-button pull-right' do %>
+
+      <%= link_to edit_account_path, class: 'pure-button pull-right' do %>
         <%= fa_icon 'user' %>
+      <% end %>
+      <%= link_to root_path, class: 'pure-button pull-right', style: 'margin-right: 10px;' do %>
+        <%= fa_icon 'th-list' %>
       <% end %>
     <% end %>
 

@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resource :account
+
   devise_for :users, controllers: { registrations: 'users/registrations',
                                     sessions: 'users/sessions',
                                     confirmations: 'users/confirmations',

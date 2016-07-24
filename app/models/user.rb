@@ -9,7 +9,9 @@ class User < ApplicationRecord
 
   before_validation :create_an_account
 
+  attr_accessor :timezone
+
   def create_an_account
-    self.account = Account.create
+    self.account = Account.create(timezone: timezone, month_start: 1)
   end
 end
