@@ -13,6 +13,6 @@ class AccountsController < ApplicationController
   private
 
   def account_params
-    params.require(:account).permit(:month_day, :timezone)
+    params.require(:account).permit(:month_start, :timezone)
   end
 end
