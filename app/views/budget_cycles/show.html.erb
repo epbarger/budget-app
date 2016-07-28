@@ -9,7 +9,7 @@
     <div class='period'> 
       <%= @budget_cycle.start_date.strftime('%-m/%-d') %> - <%= (@budget_cycle.end_date + 1.second).strftime('%-m/%-d') %> 
       <% if @budget_cycle.long_cycle? || @budget_cycle.short_cycle? %>
-        <a href='' id='odd-cycle-notice' title='This budget cycle has an odd period to accommodate a changed cycle start day.'> <%= fa_icon "question-circle" %> </a>
+        <a href='' id='odd-cycle-notice' title='This budget cycle has an odd period to accommodate a changed cycle start day.'> <%= fa_icon "question" %> </a>
       <% end %>
     </div>
     <div class='top-margin'>
@@ -35,7 +35,7 @@
         <span class='bold <%= @budget_cycle.current_balance > 0 ? 'unlocked-positive' : 'unlocked-negative' %>' >Unlocked: </span> <%= cents_to_currency(@budget_cycle.unlocked_balance) %> of <%= cents_to_currency(@budget_cycle.adjusted_period_balance) %> 
 
         <% if @budget_cycle.long_cycle? || @budget_cycle.short_cycle? %>
-          <a href='' id='odd-amount-notice' title='The total budget this period is different to accommodate a changed cycle start day.'> <%= fa_icon "question-circle" %> </a>
+          <a href='' id='odd-amount-notice' title='The total budget this period is different to accommodate a changed cycle start day.'> <%= fa_icon "question" %> </a>
         <% end %>
       </div> 
       <div class='small-bottom-margin'> <span class='bold <%= @budget_cycle.current_balance > 0 ? 'spent-positive' : 'spent-negative' %>'>Spent: </span> <%= cents_to_currency(@budget_cycle.amount_spent) %></div> 
