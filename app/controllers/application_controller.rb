@@ -13,7 +13,9 @@ class ApplicationController < ActionController::Base
   end
 
   def check_and_create_budget_cycles
-    current_user.account.budgets.each(&:check_and_create_cycle)
+    set_time_zone do 
+      current_user.account.budgets.each(&:check_and_create_cycle)
+    end
   end
 
   def configure_permitted_parameters
