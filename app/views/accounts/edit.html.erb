@@ -16,8 +16,7 @@
                     <%= f.label :timezone %>
                 </div>
                 <div class='pure-u-3-5'>
-<!--                     <%= f.text_field :timezone, class: 'one-hundred', required: true %> -->
-                    <%= time_zone_select :account, :timezone, nil, { include_blank: false }, class: 'one-hundred' %>
+                    <%= time_zone_select :account, :timezone, nil, { include_blank: false }, class: 'one-hundred', style: 'overflow: hidden;' %>
                 </div>
             </div>
 

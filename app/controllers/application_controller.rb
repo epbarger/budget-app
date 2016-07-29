@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
 
   def check_and_create_budget_cycles
     set_time_zone do 
-      current_user.account.budgets.each(&:check_and_create_cycle)
+      current_user.account.budgets.each(&:check_and_create_cycle) if current_user
     end
   end
 
