@@ -4,6 +4,7 @@ footer {
   padding: 0 10px;
   font-size: 13px;
   color: grey;
+  text-align: center;
 
   a {
     color: rgb(0, 120, 231);
@@ -11,6 +12,14 @@ footer {
     text-decoration: none;
     &:hover {
       text-decoration: underline;
+    }
+  }
+
+  @media screen and (min-width: 35.5em) {
+    text-align: left;
+
+    .footer-links {
+      text-align: right;
     }
   }
 }
