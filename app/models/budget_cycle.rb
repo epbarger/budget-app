@@ -55,6 +55,7 @@ class BudgetCycle < ApplicationRecord
 
   def adjusted_period_balance
     days_in_month = Time.days_in_month(start_date.month)
-    period_balance * number_of_days_in_cycle / days_in_month
+    # period_balance * number_of_days_in_cycle / days_in_month
+    budget.amount * number_of_days_in_cycle / days_in_month
   end
 end
