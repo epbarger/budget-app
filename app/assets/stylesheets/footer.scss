@@ -1,0 +1,16 @@
+footer {
+  max-width: 960px;
+  margin: 5px auto 10px auto;
+  padding: 0 10px;
+  font-size: 13px;
+  color: grey;
+
+  a {
+    color: rgb(0, 120, 231);
+    margin-left: 2px;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
