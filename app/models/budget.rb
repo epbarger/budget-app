@@ -15,7 +15,7 @@ class Budget < ApplicationRecord
   def check_and_create_cycle
     if (budget_cycles.count == 0) 
       budget_cycles.create(start_date: get_current_start, end_date: get_current_end, period_balance: amount)
-      current_cycle.balance_events.create(amount: current_cycle.unlocked_balance, note: 'New Budget Filler Transaction') # TODO, make it hidden
+      # current_cycle.balance_events.create(amount: current_cycle.unlocked_balance, note: 'New Budget Filler Transaction') # TODO, make it hidden
 
     elsif !current_cycle && reoccuring
       budget_cycles.create(start_date: get_current_start, end_date: get_current_end, period_balance: amount)
