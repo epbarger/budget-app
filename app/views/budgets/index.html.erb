@@ -3,9 +3,9 @@
     <h2 class='budget-name'> Budgets </h2> 
     <div class='budget-list top-margin'>
       <% @budgets.each do |budget| %>
-        <%= link_to budget_budget_cycle_path(budget, budget.budget_cycles.last) do %> 
+        <%= link_to budget_budget_cycle_path(budget, budget.current_cycle) do %> 
           <div class='budget-list-row <%= (budget.current_cycle.current_balance < 0) ? 'negative-color' : 'positive-color' %>'>
-            <span style='float:right;'><%= cents_to_currency(budget.budget_cycles.last.current_balance) %></span>
+            <span style='float:right;'><%= cents_to_currency(budget.current_cycle.current_balance) %></span>
             <h2><%= budget.name %></h2>
           </div>
         <% end %>

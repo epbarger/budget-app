@@ -34,7 +34,7 @@ class Budget < ApplicationRecord
   end
 
   def get_current_start
-    start = Time.zone.now - 1.month
+    start = Time.zone.now - 1.month + 1.day
     while start.day != account.month_start
       start += 1.day
     end
@@ -42,7 +42,7 @@ class Budget < ApplicationRecord
   end
 
   def get_current_end
-    start = Time.zone.now
+    start = Time.zone.now + 1.day
     while start.day != account.month_start
       start += 1.day
     end
