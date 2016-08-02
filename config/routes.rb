@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     resources :budget_cycles do 
       resources :balance_events, only: [:create, :destroy]
     end
+
+    get :history
   end
 
   resource :account

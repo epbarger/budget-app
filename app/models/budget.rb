@@ -57,4 +57,8 @@ class Budget < ApplicationRecord
     time = Time.zone.now
     budget_cycles.where("start_date <= ? AND end_date >= ?", time, time).order('created_at DESC').first
   end
+
+  def update_current_cycle_balance
+    current_cycle.update(period_balance: amount)
+  end
 end
