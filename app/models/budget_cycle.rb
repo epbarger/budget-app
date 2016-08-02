@@ -22,7 +22,7 @@ class BudgetCycle < ApplicationRecord
 
   def unlocked_balance
     # ( (((day_in_cycle.to_f / replenish_period).ceil).to_f / number_of_periods_in_cycle) * adjusted_period_balance ).round
-    ([(day_in_cycle.to_f / number_of_days_in_cycle), 1.0].max * adjusted_period_balance).round
+    ([(day_in_cycle.to_f / number_of_days_in_cycle), 1.0].min * adjusted_period_balance).round
   end
 
   def day_in_cycle # starts at day 1
