@@ -3,33 +3,35 @@
     <h2 class='budget-name'> History </h2> 
     <div class='top-margin'>
         <% @budget_cycles.each do |cycle| %>
-            <div class="history-row"> 
-                <span class='period'>
-                    <%= cycle.start_date.strftime('%-m/%-d/%Y') %> - <%= (cycle.end_date + 1.second).strftime('%-m/%-d/%Y') %>
-                </span>
+            <%= link_to budget_budget_cycle_path(@budget, cycle) do %>
+                <div class="history-row"> 
+                    <span class='period'>
+                        <%= cycle.start_date.strftime('%-m/%-d/%Y') %> - <%= (cycle.end_date + 1.second).strftime('%-m/%-d/%Y') %>
+                    </span>
 
-                
-                  <% if cycle.current_balance > 0 %>
-                    <div class='meter positive'>
-                      <span style='width: <%= [((cycle.unlocked_balance / cycle.adjusted_period_balance.to_f) * 100.0), 100].min %>%;' class='meter-unlocked'></span>
-                      <span style='width: <%= [(((cycle.amount_spent) / cycle.adjusted_period_balance.to_f) * 100.0), 100].min %>%;' class='meter-spent overlay'></span>
+                    
+                      <% if cycle.current_balance > 0 %>
+                        <div class='meter positive'>
+                          <span style='width: <%= [((cycle.unlocked_balance / cycle.adjusted_period_balance.to_f) * 100.0), 100].min %>%;' class='meter-unlocked'></span>
+                          <span style='width: <%= [(((cycle.amount_spent) / cycle.adjusted_period_balance.to_f) * 100.0), 100].min %>%;' class='meter-spent overlay'></span>
+                        </div>
+                      <% else %>
+                        <div class='meter negative'>
+                          <span style='width: <%= [((cycle.unlocked_balance / cycle.adjusted_period_balance.to_f) * 100.0), 100].min %>%;' class='meter-unlocked'></span>
+                          <span style='width: <%= [(((cycle.amount_spent) / cycle.adjusted_period_balance.to_f) * 100.0), 100].min %>%;' class='meter-spent overlay'></span>
+                        </div>
+                      <% end %>
+                    
+                    <div class='history-summary'> 
+                        <span style='margin-right: 6px;'><span class='bold <%= cycle.current_balance > 0 ? 'spent-positive' : 'spent-negative' %>'>Spent: </span> <%= cents_to_currency(cycle.amount_spent) %></span>
+                        <span class='bold <%= cycle.current_balance > 0 ? 'unlocked-positive' : 'unlocked-negative' %>' >Budget: </span> <%= cents_to_currency(cycle.adjusted_period_balance) %> 
                     </div>
-                  <% else %>
-                    <div class='meter negative'>
-                      <span style='width: <%= [((cycle.unlocked_balance / cycle.adjusted_period_balance.to_f) * 100.0), 100].min %>%;' class='meter-unlocked'></span>
-                      <span style='width: <%= [(((cycle.amount_spent) / cycle.adjusted_period_balance.to_f) * 100.0), 100].min %>%;' class='meter-spent overlay'></span>
-                    </div>
-                  <% end %>
-                
-                <div class='history-summary'> 
-                    <span style='margin-right: 6px;'><span class='bold <%= cycle.current_balance > 0 ? 'spent-positive' : 'spent-negative' %>'>Spent: </span> <%= cents_to_currency(cycle.amount_spent) %></span>
-                    <span class='bold <%= cycle.current_balance > 0 ? 'unlocked-positive' : 'unlocked-negative' %>' >Budget: </span> <%= cents_to_currency(cycle.adjusted_period_balance) %> 
+                    
                 </div>
-                
-            </div>
+            <% end %>  
         <% end %>
     </div>
-    <%= link_to budget_budget_cycle_path(@budget, @budget.current_cycle), class: 'pure-button pure-button-white one-hundred top-margin' do %>
+    <%= link_to budget_budget_cycle_path(@budget, @budget.current_cycle), class: 'pure-button pure-button-white one-hundred' do %>
       Back
     <% end %>
   </div>
