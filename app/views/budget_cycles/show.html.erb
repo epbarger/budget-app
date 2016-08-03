@@ -15,7 +15,7 @@
     <div class='top-margin'>
       <h1 class="large-balance <%= 'negative' if @budget_cycle.current_balance < 0 %>"><%= cents_to_currency(@budget_cycle.current_balance) %></h1>
     </div>
-    <p>
+    
       <% if @budget_cycle.current_balance > 0 %>
         <div class='meter positive'>
           <span style='width: <%= [((@budget_cycle.unlocked_balance / @budget_cycle.adjusted_period_balance.to_f) * 100.0), 100].min %>%;' class='meter-unlocked'></span>
@@ -29,7 +29,7 @@
       <% end %>
 <!--       <span class='meter-label'><%= @budget_cycle.start_date.to_date.to_s %></span>
       <span class='meter-label pull-right'><%= (@budget_cycle.end_date + 1.second).to_date.to_s %></span> -->
-    </p>
+    
     <div class='summary'>
       <div class='small-bottom-margin'> 
         <span class='bold <%= @budget_cycle.current_balance > 0 ? 'unlocked-positive' : 'unlocked-negative' %>' >Unlocked: </span> <%= cents_to_currency(@budget_cycle.unlocked_balance) %> of <%= cents_to_currency(@budget_cycle.adjusted_period_balance) %> 

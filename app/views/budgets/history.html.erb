@@ -8,12 +8,7 @@
                     <%= cycle.start_date.strftime('%-m/%-d/%Y') %> - <%= (cycle.end_date + 1.second).strftime('%-m/%-d/%Y') %>
                 </span>
 
-                <div class='history-summary'> 
-                    <span style='margin-right: 6px;'><span class='bold <%= cycle.current_balance > 0 ? 'spent-positive' : 'spent-negative' %>'>Spent: </span> <%= cents_to_currency(cycle.amount_spent) %></span>
-                    <span class='bold <%= cycle.current_balance > 0 ? 'unlocked-positive' : 'unlocked-negative' %>' >Budget: </span> <%= cents_to_currency(cycle.adjusted_period_balance) %> 
-                </div>
-
-                <p>
+                
                   <% if cycle.current_balance > 0 %>
                     <div class='meter positive'>
                       <span style='width: <%= [((cycle.unlocked_balance / cycle.adjusted_period_balance.to_f) * 100.0), 100].min %>%;' class='meter-unlocked'></span>
@@ -25,7 +20,11 @@
                       <span style='width: <%= [(((cycle.amount_spent) / cycle.adjusted_period_balance.to_f) * 100.0), 100].min %>%;' class='meter-spent overlay'></span>
                     </div>
                   <% end %>
-                </p>
+                
+                <div class='history-summary'> 
+                    <span style='margin-right: 6px;'><span class='bold <%= cycle.current_balance > 0 ? 'spent-positive' : 'spent-negative' %>'>Spent: </span> <%= cents_to_currency(cycle.amount_spent) %></span>
+                    <span class='bold <%= cycle.current_balance > 0 ? 'unlocked-positive' : 'unlocked-negative' %>' >Budget: </span> <%= cents_to_currency(cycle.adjusted_period_balance) %> 
+                </div>
                 
             </div>
         <% end %>
