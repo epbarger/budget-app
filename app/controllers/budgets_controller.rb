@@ -15,7 +15,6 @@ class BudgetsController < ApplicationController
 
   def create
     @budget = current_user.account.budgets.create( budget_params.merge({ amount: (budget_params[:amount].to_f * 100.0).to_i }) )
-    @budget.create_initial_cycle
     redirect_to action: :index
   end
 

@@ -23,6 +23,8 @@
       <% end %>
     </p>
     <div class='summary'>
+      <p><%= @budget_cycle.start_date %></p>
+      <p><%= @budget_cycle.end_date %></p>
       <div class='small-bottom-margin'> <span class='bold <%= @budget_cycle.current_balance > 0 ? 'unlocked-positive' : 'unlocked-negative' %>' >Unlocked: </span> <%= cents_to_currency(@budget_cycle.unlocked_balance) %> of <%= cents_to_currency(@budget_cycle.period_balance) %></div> 
       <div class='small-bottom-margin'> <span class='bold <%= @budget_cycle.current_balance > 0 ? 'spent-positive' : 'spent-negative' %>'>Spent: </span> <%= cents_to_currency(@budget_cycle.amount_spent) %></div> 
       <!-- <p> Day <%= @budget_cycle.day_in_cycle %> of <%= @budget_cycle.number_of_days_in_cycle %></p>  -->

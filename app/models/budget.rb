@@ -12,11 +12,17 @@ class Budget < ApplicationRecord
   # name
   # amount
 
-  def create_initial_cycle
-    if monthly
-      budget_cycles.create(start_date: Time.zone.now.beginning_of_month, end_date: Time.zone.now.end_of_month, period_balance: amount)
-    else
-      budget_cycles.create(start_date: Time.zone.now.beginning_of_day, end_date: Time.zone.now.beginning_of_day - 1.minute + period.days, period_balance: amount)
+  def check_and_create_cycle
+    if (budget_cycles.count == 0) || (!current_cycle && reoccuring)
+      budget_cycles.create(start_date: Time.zone.now.beginning_of_month + day_offset, end_date: Time.zone.now.end_of_month + day_offset, period_balance: amount)
+    elsif !current_cycle
+      raise 'current cycle is missing'
+    elsif current_cycle.start_date.day != account.month_start
+      if !reoccuring || budget_cycles.count == 1
+        current_cycle.update(start_date: Time.zone.now.beginning_of_month + day_offset, end_date: Time.zone.now.end_of_month + day_offset)
+      else
+        current_cycle.update(end_date: Time.zone.now.end_of_month + day_offset)
+      end
     end
   end
 
@@ -25,24 +31,10 @@ class Budget < ApplicationRecord
   end
 
   def current_cycle
-    budget_cycles.order("created_at ASC").last
+    budget_cycles.where("start_date <= ? AND end_date >= ?", Time.zone.now, Time.zone.now).order('created_at DESC').first
   end
 
-  def check_and_create_next_cycle
-    if reoccuring
-      previous_cycle = budget_cycles.order("created_at DESC").first
-      unless previous_cycle.active
-        if monthly
-          budget_cycles.create(start_date: Time.zone.now.beginning_of_month, end_date: Time.zone.now.end_of_month, period_balance: amount)
-        else
-          if Time.zone.now < (previous_cycle.end_date + period.days) # within the "next" cycles period
-            start_date = (previous_cycle.end_date + 5.minutes).beginning_of_day
-            budget_cycles.create(start_date: start_date, end_date: start_date - 1.minute + period.days, period_balance: amount)
-          else # otherwise just reset it and start it now
-            budget_cycles.create(start_date: Time.zone.now.beginning_of_day, end_date: Time.zone.now.beginning_of_day - 1.minute + period.days, period_balance: amount)
-          end
-        end
-      end
-    end
+  def day_offset
+    (account.month_start - 1).days
   end
 end
