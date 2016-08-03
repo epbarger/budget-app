@@ -43,26 +43,28 @@
     </div>
   </div>
   <div class="pure-u-1 top-margin">
-    <div class='new-transaction'>
-      <div class='bold small-bottom-margin'>New Transaction</div>
-      <%= form_for @new_balance_event, url: budget_budget_cycle_balance_events_path(@budget, @budget_cycle.id), html: { class: 'pure-form pure-g' } do |f| %>
-          <div class='pure-u-6-24'>
-            <div style='margin-right:2px;'>
-               <%= f.number_field :amount, placeholder: '$', min: 0.01, step: 0.01, class: 'amount-field one-hundred', required: true %>
+    <% if @budget_cycle.active %>
+      <div class='new-transaction'>
+        <div class='bold small-bottom-margin'>New Transaction</div>
+        <%= form_for @new_balance_event, url: budget_budget_cycle_balance_events_path(@budget, @budget_cycle.id), html: { class: 'pure-form pure-g' } do |f| %>
+            <div class='pure-u-6-24'>
+              <div style='margin-right:2px;'>
+                 <%= f.number_field :amount, placeholder: '$', min: 0.01, step: 0.01, class: 'amount-field one-hundred', required: true %>
+              </div>
             </div>
-          </div>
-          <div class='pure-u-13-24'>
-            <div style='margin-right:2px;'>
-               <%= f.text_field :note, placeholder: 'Note (Optional)', class: 'note-field one-hundred'%>
+            <div class='pure-u-13-24'>
+              <div style='margin-right:2px;'>
+                 <%= f.text_field :note, placeholder: 'Note (Optional)', class: 'note-field one-hundred'%>
+              </div>
             </div>
-          </div>
-          <div class='pure-u-5-24'>
-            <%= f.submit 'Add', class: 'pure-button pure-button-primary one-hundred' %>
-         </div>
-      <% end %>
-    </div> 
+            <div class='pure-u-5-24'>
+              <%= f.submit 'Add', class: 'pure-button pure-button-primary one-hundred' %>
+           </div>
+        <% end %>
+      </div>
+    <% end %> 
 
-    <div class="transaction-log top-margin">
+    <div class="transaction-log <%= 'top-margin' if @budget_cycle.active %>">
       <div class='bold small-bottom-margin'>Transaction Log<small>click for details</small></div>
       <table class="pure-table pure-table-horizontal pure-table-striped-fixed transaction-table">
         <thead>
