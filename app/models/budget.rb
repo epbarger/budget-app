@@ -24,7 +24,7 @@ class Budget < ApplicationRecord
       raise 'current cycle is missing'
 
     elsif current_cycle.start_date.day != account.month_start
-      if !reoccuring || created_at > get_current_start
+      if !reoccuring # || created_at > get_current_start # re-think how the fuck this is supposed to work
         current_cycle.update(start_date: get_current_start, end_date: get_current_end)
       else
         current_cycle.update(end_date: Time.zone.now <= get_current_start ? get_current_start : get_current_end)
