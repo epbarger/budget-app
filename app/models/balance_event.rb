@@ -7,6 +7,11 @@ class BalanceEvent < ApplicationRecord
   # amount
   # note
 
+  def destroy
+    raise 'cant destroy if the cycle is inactive' unless budget_cycle.active
+    super
+  end
+
   private
 
   def active_cycle
