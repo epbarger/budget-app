@@ -2,7 +2,7 @@ class BudgetsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @budgets = current_user.account.budgets.order("created_at")
+    @budgets = current_user.account.budgets.order("created_at").reject {|b| b.current_cycle.nil? }
   end
 
   def show # list of all budget cyces
