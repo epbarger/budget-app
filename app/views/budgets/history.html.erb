@@ -1,6 +1,6 @@
 <div class='pure-g'>
   <div class="pure-u-1"> 
-    <h2 class='budget-name'> History </h2> 
+    <h2 class='budget-name'> <%= @budget.name %> </h2> 
     <div class='top-margin'>
         <% @budget_cycles.each do |cycle| %>
             <%= link_to budget_budget_cycle_path(@budget, cycle) do %>
