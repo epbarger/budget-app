@@ -37,6 +37,7 @@ class BudgetsController < ApplicationController
 
   def history
     @budget = current_user.account.budgets.find(params[:budget_id])
+    @budget_cycles = @budget.budget_cycles.order("end_date DESC")
   end
 
   private

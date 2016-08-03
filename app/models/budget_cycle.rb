@@ -7,6 +7,8 @@ class BudgetCycle < ApplicationRecord
   delegate :replenish_period, to: :budget
   delegate :name, to: :budget
 
+  validate :does_not_overlap_with_existing_cycle
+
   # budget_id
   # start_date
   # end_date
@@ -58,5 +60,13 @@ class BudgetCycle < ApplicationRecord
   def adjusted_period_balance
     days_in_month = Time.days_in_month(start_date.month)
     period_balance * number_of_days_in_cycle / days_in_month
+  end
+
+  private
+
+  def does_not_overlap_with_existing_cycle
+    if budget.budget_cycles.where("id != ? and start_date >= ? and end_date <= ?", id, start_date, end_date).count > 0
+      errors.add(:base, 'there is already a budget cycle in this time period')
+    end
   end
 end
