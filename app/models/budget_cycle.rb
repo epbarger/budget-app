@@ -21,7 +21,7 @@ class BudgetCycle < ApplicationRecord
   end
 
   def unlocked_balance
-    ( (((day_in_cycle.to_f / replenish_period).ceil).to_f / number_of_periods_in_cycle) * period_balance ).round
+    ( (((day_in_cycle.to_f / replenish_period).ceil).to_f / number_of_periods_in_cycle) * adjusted_period_balance ).round
   end
 
   def day_in_cycle # starts at day 1
@@ -51,5 +51,10 @@ class BudgetCycle < ApplicationRecord
     days_in_month = Time.days_in_month(start_date.month)
     return true if number_of_days_in_cycle > days_in_month
     false
+  end
+
+  def adjusted_period_balance
+    days_in_month = Time.days_in_month(start_date.month)
+    period_balance * number_of_days_in_cycle / days_in_month
   end
 end

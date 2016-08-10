@@ -15,6 +15,12 @@ $(document).ready(function(){
 
   $('#odd-cycle-notice').on('click', function(e){
     e.preventDefault();
-    alert('This budget cycle has an odd period to accomadate a changed cycle start day.')
+    alert('This budget cycle has an odd period to accommodate a changed cycle start day.')
   })
+
+  $('#odd-amount-notice').on('click', function(e){
+    e.preventDefault();
+    alert('The total budget this period is different to accommodate a changed cycle start day.')
+  })
+  
 })
