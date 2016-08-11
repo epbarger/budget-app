@@ -25,7 +25,7 @@ class BudgetCycle < ApplicationRecord
   end
 
   def day_in_cycle # starts at day 1
-    ((Time.now.beginning_of_day - start_date) / 1.day.seconds + 1).to_i
+    ((Time.zone.now.beginning_of_day - start_date) / 1.day.seconds + 1).to_i
   end
 
   def number_of_days_in_cycle
@@ -37,7 +37,7 @@ class BudgetCycle < ApplicationRecord
   end
 
   def active
-    time = Time.now
+    time = Time.zone.now
     time < end_date && time > start_date
   end
 

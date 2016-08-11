@@ -23,14 +23,14 @@ class Budget < ApplicationRecord
       if !reoccuring || created_at > get_current_start
         current_cycle.update(start_date: get_current_start, end_date: get_current_end)
       else
-        current_cycle.update(end_date: Time.now <= get_current_start ? get_current_start : get_current_end)
+        current_cycle.update(end_date: Time.zone.now <= get_current_start ? get_current_start : get_current_end)
       end
 
     end
   end
 
   def get_current_start
-    start = Time.now - 1.month
+    start = Time.zone.now - 1.month
     while start.day != account.month_start
       start += 1.day
     end
@@ -38,7 +38,7 @@ class Budget < ApplicationRecord
   end
 
   def get_current_end
-    start = Time.now
+    start = Time.zone.now
     while start.day != account.month_start
       start += 1.day
     end
@@ -50,7 +50,7 @@ class Budget < ApplicationRecord
   end
 
   def current_cycle
-    time = Time.now
+    time = Time.zone.now
     budget_cycles.where("start_date <= ? AND end_date >= ?", time, time).order('created_at DESC').first
   end
 end
