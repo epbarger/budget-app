@@ -6,6 +6,12 @@
     <h2 class='budget-name'> 
       <%= @budget_cycle.name %> 
     </h2>
+    <div class='period'> 
+      <%= @budget_cycle.start_date.strftime('%-m/%-d') %> - <%= (@budget_cycle.end_date + 1.second).strftime('%-m/%-d') %> 
+      <% if @budget_cycle.long_cycle? || @budget_cycle.short_cycle? %>
+        <a href='' id='odd-cycle-notice' title='This budget cycle is an odd length in order to adjust to a changed cycle start day.'> <%= fa_icon "question-circle" %> </a>
+      <% end %>
+    </div>
     <div class='top-margin'>
       <h1 class="large-balance <%= 'negative' if @budget_cycle.current_balance < 0 %>"><%= cents_to_currency(@budget_cycle.current_balance) %></h1>
     </div>
@@ -21,11 +27,13 @@
           <span style='width: <%= [(((@budget_cycle.amount_spent) / @budget_cycle.period_balance.to_f) * 100.0), 100].min %>%;' class='meter-spent overlay'></span>
         </div>
       <% end %>
+<!--       <span class='meter-label'><%= @budget_cycle.start_date.to_date.to_s %></span>
+      <span class='meter-label pull-right'><%= (@budget_cycle.end_date + 1.second).to_date.to_s %></span> -->
     </p>
     <div class='summary'>
       <div class='small-bottom-margin'> <span class='bold <%= @budget_cycle.current_balance > 0 ? 'unlocked-positive' : 'unlocked-negative' %>' >Unlocked: </span> <%= cents_to_currency(@budget_cycle.unlocked_balance) %> of <%= cents_to_currency(@budget_cycle.period_balance) %></div> 
       <div class='small-bottom-margin'> <span class='bold <%= @budget_cycle.current_balance > 0 ? 'spent-positive' : 'spent-negative' %>'>Spent: </span> <%= cents_to_currency(@budget_cycle.amount_spent) %></div> 
-      <!-- <p> Day <%= @budget_cycle.day_in_cycle %> of <%= @budget_cycle.number_of_days_in_cycle %></p>  -->
+<!--       <p> Day <%= @budget_cycle.day_in_cycle %> of <%= @budget_cycle.number_of_days_in_cycle %></p> -->
     </div>
   </div>
   <div class="pure-u-1 top-margin">
