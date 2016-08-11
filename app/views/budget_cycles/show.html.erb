@@ -9,7 +9,7 @@
     <div class='period'> 
       <%= @budget_cycle.start_date.strftime('%-m/%-d') %> - <%= (@budget_cycle.end_date + 1.second).strftime('%-m/%-d') %> 
       <% if @budget_cycle.long_cycle? || @budget_cycle.short_cycle? %>
-        <a href='' id='odd-cycle-notice' title='This budget cycle is an odd length in order to adjust to a changed cycle start day.'> <%= fa_icon "question-circle" %> </a>
+        <a href='' id='odd-cycle-notice' title='This budget cycle has an odd period to accomadate a changed cycle start day.'> <%= fa_icon "question-circle" %> </a>
       <% end %>
     </div>
     <div class='top-margin'>
