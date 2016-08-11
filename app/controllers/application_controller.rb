@@ -3,13 +3,13 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :check_and_create_budget_cycles
+  before_action :set_paper_trail_whodunnit
   around_action :set_time_zone
 
   protected
 
-  def set_time_zone(&block)
-    time_zone = current_user.try(:account).try(:timezone) || 'UTC'
-    Time.use_zone(time_zone, &block)
+  def set_time_zone
+    Time.use_zone(current_user.try(:account).try(:timezone) || 'UTC') { yield }
   end
 
   def check_and_create_budget_cycles
