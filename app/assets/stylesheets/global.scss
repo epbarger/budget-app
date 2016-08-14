@@ -15,6 +15,10 @@ h1.large-balance {
   &.negative {
     color: rgb(254, 95, 76);
   }
+
+  &.over-pace {
+    color: #ff8700;
+  }
 }
 
 .hide {
@@ -74,6 +78,30 @@ input[type='checkbox'] {
 
 .negative-color {
   color: rgb(254, 95, 76);
+}
+
+.positive {
+  color: rgb(39, 234, 165);
+}
+
+.negative {
+  color: rgb(254, 95, 76);
+}
+
+.over-pace {
+  color: #ffb85c;
+}
+
+.positive-bright{
+  color: green;
+}
+
+.negative-bright{
+  color: red;
+}
+
+.over-pace-bright {
+  color: #ff8700;
 }
 
 .small-bottom-margin {
@@ -155,8 +183,8 @@ small {
 
 #odd-cycle-notice, #odd-amount-notice {
   font-size: 13px;
-  // color: black;
-  color: orange;
+  color: black;
+  // color: orange;
 }
 
 .text-right {

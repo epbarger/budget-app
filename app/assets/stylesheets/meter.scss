@@ -30,6 +30,11 @@
   &.meter-spent { background-color: red;  z-index: -1; }
 }
 
+.meter.over-pace > span {
+  &.meter-unlocked { background-color: #ffb85c; }
+  &.meter-spent { background-color: #ff8700;  z-index: -1; }
+}
+
 .spent-positive{
   color: green;
 }

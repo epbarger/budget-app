@@ -14,8 +14,12 @@ class BudgetCycle < ApplicationRecord
   # end_date
   # period_balance
 
-  def current_balance
+  def balance_vs_unlocked
     unlocked_balance - amount_spent
+  end
+
+  def current_balance
+    adjusted_period_balance - amount_spent
   end
 
   def amount_spent
