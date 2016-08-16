@@ -14,4 +14,8 @@ class User < ApplicationRecord
   def create_an_account
     self.account = Account.create(timezone: REVERSE_TZ_HASH[timezone], month_start: 1)
   end
+
+  def remember_me # always remember
+    true
+  end
 end
