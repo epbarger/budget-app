@@ -21,7 +21,8 @@ class Budget < ApplicationRecord
       budget_cycles.create(start_date: get_current_start, end_date: get_current_end, period_balance: amount)
 
     elsif !current_cycle
-      raise 'current cycle is missing'
+      # i don't think we need to do anything in this case
+      # raise 'current cycle is missing'
 
     elsif current_cycle.start_date.day != account.month_start
       if !reoccuring # || created_at > get_current_start # re-think how the fuck this is supposed to work
